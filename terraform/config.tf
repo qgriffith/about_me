@@ -3,6 +3,12 @@ provider "aws" {
   profile    = "default"
 }
 
+provider "aws" {
+  # us-east-1 instance
+  region = "us-east-1"
+  alias = "use1"
+}
+
 terraform {
   backend "s3" {
     bucket = "qgriffith-terraform-state"
