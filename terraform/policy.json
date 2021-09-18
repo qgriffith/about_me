@@ -9,7 +9,7 @@
                 "s3:GetObject"
             ],
             "Resource": [
-                "arn:aws:s3:::qgriffith-about-me-site/hugo/*"
+                "arn:aws:s3:::qgriffith-about-me-site/*"
             ]
         }
     ]
