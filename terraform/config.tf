@@ -4,7 +4,7 @@ provider "aws" {
 }
 
 provider "aws" {
-  # us-east-1 instance
+  # us-east-1 instance this is required for cloudfront all ssl certs have to be in this regions
   region = "us-east-1"
   alias = "use1"
 }

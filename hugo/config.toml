@@ -90,9 +90,6 @@ theme = "hugo-devresume-theme"
     [params.languages]
         enable = false
 
-
-
-
     [params.interests]
         enable = true
 
@@ -238,8 +235,6 @@ theme = "hugo-devresume-theme"
     [params.projects]
         enable = false
 
-
-
     [params.information]
         enable = false
 
@@ -247,13 +242,17 @@ theme = "hugo-devresume-theme"
         enable = true
 
         [[params.social.list]]
-        icon = "fab fa-github-square"
+        icon = "fab fa-bitbucket"
         url = "https://bitbucket.org/qgriffith/"
-        title = "qgriffith"
+        title = "Projects"
+        [[params.social.list]]
+        icon = "fas fa-code"
+        url = "https://bitbucket.org/qgriffith/about_me"
+        title = "Site built with Code"        
         [[params.social.list]]
         icon = "fab fa-linkedin"
         url = "https://www.linkedin.com/in/quenten-griffith-1682493/"
-        title = "qgriffith"
+        title = "Profile"
 
 [deployment]
 # By default, files are uploaded in an arbitrary order.
@@ -267,7 +266,7 @@ order = [".jpg$", ".gif$"]
 name = "resume"
 
 # If you are using a CloudFront CDN, deploy will invalidate the cache as needed.
-cloudFrontDistributionID = "ECS5IUUKYFPX3"
+cloudFrontDistributionID = "EKKIJCBCAINNI"
 
 #S3
 URL = "s3://qgriffith-about-me-site?region=us-east-2"
