@@ -23,10 +23,10 @@ pipelines:
               # See more security tools at https://bitbucket.org/product/features/pipelines/integrations?&category=security
               - pipe: atlassian/git-secrets-scan:0.4.3
         - step:
-            name: Deploy to Production
-            deployment: Production
-            trigger: manual
+            name: Build Infra
+            deployment: Production            
             script:
+              - cd terraform
               - terraform init
               - terraform plan
               - terraform apply -auto-approve
