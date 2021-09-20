@@ -3,8 +3,8 @@ data "aws_route53_zone" "hostedzone" {
   private_zone = false
 }
 
-resource "aws_s3_bucket" "qgriffith-about-me" {
-  bucket = "qgriffith-about-me-site"
+resource "aws_s3_bucket" "content" {
+  bucket = var.bucket
   acl    = "public-read"
   policy = file("policy.json")
 versioning {
@@ -47,8 +47,8 @@ resource "aws_cloudfront_distribution" "s3frontend" {
       origin_ssl_protocols   = ["TLSv1.1", "TLSv1.2"]
     }
 
-    domain_name = aws_s3_bucket.qgriffith-about-me.website_endpoint
-    origin_id   = aws_s3_bucket.qgriffith-about-me.bucket
+    domain_name = aws_s3_bucket.content.website_endpoint
+    origin_id   = aws_s3_bucket.content.bucket
   }
 
   enabled             = true
@@ -60,7 +60,7 @@ resource "aws_cloudfront_distribution" "s3frontend" {
     compress               = true
     allowed_methods        = ["GET", "HEAD"]
     cached_methods         = ["GET", "HEAD"]
-    target_origin_id       = aws_s3_bucket.qgriffith-about-me.bucket
+    target_origin_id       = aws_s3_bucket.content.bucket
     min_ttl                = 0
     default_ttl            = 86400
     max_ttl                = 31536000
