@@ -4,7 +4,7 @@ pipelines:
   default:
     - parallel:
         - step:
-            name: Test
+            name: Test Terraform is valid
             script:
               - terraform init
               - terraform validate
@@ -17,18 +17,22 @@ pipelines:
   branches:
     master:
         - step:
-            name: Security Scan
+            name: Build Infra Terraform         
             script:
-              # Run a security scan for sensitive data.
-              # See more security tools at https://bitbucket.org/product/features/pipelines/integrations?&category=security
-              - pipe: atlassian/git-secrets-scan:0.4.3
-        - step:
-            name: Deploy to Production
-            deployment: Production
-            trigger: manual
-            script:
+              - cd terraform
               - terraform init
               - terraform plan
               - terraform apply -auto-approve
-
-
+        - step:
+            name: Deploy Hugo
+            trigger: manual
+            image: atlassian/default-image:2
+            deployment: Production            
+            script:
+              - apt-get update -y && apt-get install wget
+              - apt-get -y install git
+              - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.deb
+              - dpkg -i hugo*.deb
+              - cd hugo
+              - hugo -v
+              - hugo deploy
