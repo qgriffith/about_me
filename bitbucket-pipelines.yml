@@ -33,6 +33,6 @@ pipelines:
               - apt-get -y install git
               - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.deb
               - dpkg -i hugo*.deb
-              - cd hugo
+              - cd hugo/resume
               - hugo -v
               - hugo deploy

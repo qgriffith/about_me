@@ -19,7 +19,7 @@ theme = "hugo-devresume-theme"
         enable = true
         name = "Quenten Griffith"
         tagline = "Senior DevOps Manger"
-        avatar = "avatar.png"
+        avatar = "images/avatar.png"
 
 
     [params.contact]
