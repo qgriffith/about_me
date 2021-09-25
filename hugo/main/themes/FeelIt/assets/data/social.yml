@@ -1,6 +1,6 @@
 # 001: Github
 github:
-  Weight: 1
+  Weight: 2
   Prefix: https://github.com/
   Title: GitHub
   Icon:
@@ -144,7 +144,7 @@ freecodecamp:
 
 # 019: Bitbucket
 bitbucket:
-  Weight: 19
+  Weight: 1
   Prefix: https://bitbucket.org/
   Title: Bitbucket
   Icon:
@@ -325,6 +325,14 @@ strava:
   Title: Strava
   Icon:
     Class: fab fa-strava fa-fw
+
+# 041: Peloton
+peloton:
+  Weight: 42
+  Prefix: https://members.onepeloton.com/members/
+  Title: Peloton
+  Icon:
+    Class: fas fa-biking fa-fw
 
 # 042: Skype
 skype:

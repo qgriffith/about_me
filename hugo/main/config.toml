@@ -512,6 +512,7 @@ ignoreErrors = ["err-missing-comment-accesstoken", "err-missing-oembed-accesstok
     Steam = ""
     Twitch = ""
     Strava = "78655622"
+    Peloton = "QWOWW"
     Skype = ""
     Whatsapp = ""
     Zhihu = ""
