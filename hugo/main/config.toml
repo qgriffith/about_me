@@ -15,7 +15,7 @@ enableGitInfo = false
 # whether to use emoji code
 enableEmoji = true
 # UA-PROPERTY_ID or G-MEASUREMENT_ID google analytics code
-googleAnalytics = ""
+googleAnalytics = "G-XH7WGNT0S6"
 
 ignoreErrors = ["err-missing-comment-accesstoken", "err-missing-oembed-accesstoken"]
 
@@ -227,9 +227,9 @@ ignoreErrors = ["err-missing-comment-accesstoken", "err-missing-oembed-accesstok
       # LOGO 的 URL
       logo = ""
       # title name
-      name = "QGriffith"
+      name = "Griffith"
       # you can add extra information before the name (HTML format is supported), such as icons
-      pre = "<i class='fas fa-hand-holding-heart fa-fw'></i>"
+      pre = "<i class='fab fa-quora'></i>"
       # you can add extra information after the name (HTML format is supported), such as icons
       post = ""
       # whether to use typeit animation for title name
