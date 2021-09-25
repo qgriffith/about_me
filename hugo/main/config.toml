@@ -46,29 +46,21 @@ ignoreErrors = ["err-missing-comment-accesstoken", "err-missing-oembed-accesstok
         title = ""
         weight = 1
       [[languages.en.menu.main]]
-        identifier = "tags"
+        identifier = "resume"
         pre = ""
         post = ""
-        name = "Tags"
-        url = "/tags/"
+        name = "Resume"
+        url = "/resume/"
         title = ""
         weight = 2
       [[languages.en.menu.main]]
-        identifier = "categories"
+        identifier = "hobbies"
         pre = ""
         post = ""
-        name = "Categories"
-        url = "/categories/"
+        name = "Hobbies"
+        url = "/categories/hobbies/"
         title = ""
         weight = 3
-      [[languages.en.menu.main]]
-        identifier = "documentation"
-        pre = ""
-        post = ""
-        name = "Docs"
-        url = "/categories/documentation/"
-        title = ""
-        weight = 4
       [[languages.en.menu.main]]
         identifier = "about"
         pre = ""
@@ -76,20 +68,20 @@ ignoreErrors = ["err-missing-comment-accesstoken", "err-missing-oembed-accesstok
         name = "About"
         url = "/about/"
         title = ""
-        weight = 5
+        weight = 4
       [[languages.en.menu.main]]
         identifier = "github"
-        pre = "<i class='fab fa-github fa-fw'></i>"
+        pre = "<i class='fab fa-bitbucket fa-fw'></i>"
         post = ""
         name = ""
-        url = "https://github.com/khusika/FeelIt"
-        title = "GitHub"
-        weight = 6
+        url = "https://bitbucket.org/qgriffith/"
+        title = "Bitbucket"
+        weight = 5
     [languages.en.params]
       # site description
       description = "About Me"
       # site keywords
-      keywords = ["Theme", "Hugo"]
+      keywords = ["Quenten", "Hugo"]
       # App icon config
       [languages.en.params.app]
         # optional site title override for the app when added to an iOS home screen or Android launcher
@@ -106,7 +98,7 @@ ignoreErrors = ["err-missing-comment-accesstoken", "err-missing-oembed-accesstok
         tileColor = "#da532c"
       # Search config
       [languages.en.params.search]
-        enable = true
+        enable = false
         # type of search engine ("lunr", "algolia")
         type = "algolia"
         # max index length of the chunked content
@@ -123,8 +115,8 @@ ignoreErrors = ["err-missing-comment-accesstoken", "err-missing-oembed-accesstok
         absoluteURL = false
         [languages.en.params.search.algolia]
           index = "index.en"
-          appID = "UAL0NNJWXE"
-          searchKey = "7b7fbdfb7ee82ee61901f2c6b09b05be"
+          appID = ""
+          searchKey = ""
 
       # About page config
       [languages.en.params.about]
@@ -176,7 +168,7 @@ ignoreErrors = ["err-missing-comment-accesstoken", "err-missing-oembed-accesstok
           # title shown in home page (HTML format is supported)
           title = "QGriffith"
           # subtitle shown in home page (HTML format is supported)
-          subtitle = "A Clean, Elegant but Advanced Hugo Theme"
+          subtitle = "My little space on the internet"
           # whether to use typeit animation for subtitle
           typeit = true
           # whether to show social links
@@ -225,7 +217,7 @@ ignoreErrors = ["err-missing-comment-accesstoken", "err-missing-oembed-accesstok
     [params.header.title]
       # URL of the LOGO
       # LOGO 的 URL
-      logo = ""
+      logo = "images/avatar.png"
       # title name
       name = "Griffith"
       # you can add extra information before the name (HTML format is supported), such as icons
@@ -246,7 +238,7 @@ ignoreErrors = ["err-missing-comment-accesstoken", "err-missing-oembed-accesstok
     # whether to show copyright info
     copyright = false
     # whether to show the author
-    author = false
+    author = true
     # site creation time
     since = 2021
     # ICP info only in China (HTML format is supported)
@@ -261,7 +253,6 @@ ignoreErrors = ["err-missing-comment-accesstoken", "err-missing-oembed-accesstok
     # date format (month and day)
     dateFormat = "01-02"
     # amount of RSS pages
-    # RSS 文章数目
     rss = 10
 
   # List (category or tag) page config
@@ -292,7 +283,7 @@ ignoreErrors = ["err-missing-comment-accesstoken", "err-missing-oembed-accesstok
     # whether to enable twemoji
     twemoji = false
     # whether to enable lightgallery
-    lightgallery = false
+    lightgallery = true
     # whether to enable the ruby extended syntax
     ruby = true
     # whether to enable the fraction extended syntax
@@ -304,7 +295,7 @@ ignoreErrors = ["err-missing-comment-accesstoken", "err-missing-oembed-accesstok
     # whether to show link to Raw Markdown content of the content
     linkToMarkdown = true
     # whether to show link to improve the article
-    improveArticle = "https://github.com/khusika/FeelIt/edit/main/exampleSite/content/"
+    improveArticle = ""
     # whether to show the full text content in RSS
     rssFullText = false
     # Table of the contents config
@@ -349,32 +340,30 @@ ignoreErrors = ["err-missing-comment-accesstoken", "err-missing-oembed-accesstok
       # whether to add GeolocateControl (https://docs.mapbox.com/mapbox-gl-js/api/#geolocatecontrol)
       geolocate = true
       # whether to add ScaleControl (https://docs.mapbox.com/mapbox-gl-js/api/#scalecontrol)
-      # 是否添加 ScaleControl (https://docs.mapbox.com/mapbox-gl-js/api/#scalecontrol)
-      scale = true
+         scale = true
       # whether to add FullscreenControl (https://docs.mapbox.com/mapbox-gl-js/api/#fullscreencontrol)
-      # 是否添加 FullscreenControl (https://docs.mapbox.com/mapbox-gl-js/api/#fullscreencontrol)
       fullscreen = true
     # Social share links in post page
     [params.page.share]
       enable = true
-      Twitter = true
-      Facebook = true
-      Linkedin = false
+      Twitter = false
+      Facebook = false
+      Linkedin = true
       Whatsapp = false
       Pinterest = false
       Tumblr = false
-      HackerNews = true
+      HackerNews = false
       Reddit = false
       VK = false
       Buffer = false
       Xing = false
-      Line = true
+      Line = false
       Instapaper = false
       Pocket = false
       Digg = false
       Stumbleupon = false
       Flipboard = false
-      Weibo = true
+      Weibo = false
       Renren = false
       Myspace = false
       Blogger = false
@@ -482,15 +471,16 @@ ignoreErrors = ["err-missing-comment-accesstoken", "err-missing-oembed-accesstok
 
   # Social config in home page
   [params.social]
-    GitHub = "xxxx"
-    Linkedin = ""
-    Twitter = "xxxx"
-    Instagram = "xxxx"
-    Facebook = "xxxx"
-    Telegram = "xxxx"
+    Bitbucket = "qgriffith/"
+    GitHub = "qgriffith"
+    Linkedin = "quenten-griffith-1682493"
+    Twitter = ""
+    Instagram = ""
+    Facebook = ""
+    Telegram = ""
     Medium = ""
     Gitlab = ""
-    Youtubelegacy = "xxxx"
+    Youtubelegacy = ""
     Youtubecustom = ""
     Youtubechannel = ""
     Tumblr = ""
@@ -500,7 +490,6 @@ ignoreErrors = ["err-missing-comment-accesstoken", "err-missing-oembed-accesstok
     Reddit = ""
     Codepen = ""
     FreeCodeCamp = ""
-    Bitbucket = ""
     Stackoverflow = ""
     Weibo = ""
     Odnoklassniki = ""
@@ -514,7 +503,7 @@ ignoreErrors = ["err-missing-comment-accesstoken", "err-missing-oembed-accesstok
     Paypal = ""
     Fivehundredpx = ""
     Mix = ""
-    Goodreads = ""
+    Goodreads = "1150567-quenten-griffith"
     Lastfm = ""
     Foursquare = ""
     Hackernews = ""
@@ -522,7 +511,7 @@ ignoreErrors = ["err-missing-comment-accesstoken", "err-missing-oembed-accesstok
     Patreon = ""
     Steam = ""
     Twitch = ""
-    Strava = ""
+    Strava = "78655622"
     Skype = ""
     Whatsapp = ""
     Zhihu = ""
@@ -543,13 +532,10 @@ ignoreErrors = ["err-missing-comment-accesstoken", "err-missing-oembed-accesstok
     XMPP = ""
     Matrix = ""
     Bilibili = ""
-    Email = "xxxx@xxxx.com"
-    Resume = "" #goo.gl id
+    Email = "qgriffith@gmail.comd"
+    Resume = ""
     xda = ""
-    RSS = true
-    [params.social.Mastodon]
-      id = "@xxxx"
-      prefix = "https://mastodon.technology/"
+    RSS = false
 
   # TypeIt config
   [params.typeit]
@@ -619,7 +605,6 @@ ignoreErrors = ["err-missing-comment-accesstoken", "err-missing-oembed-accesstok
     objectFit = false
 
 # Markup related configuration in Hugo
-# Hugo 解析文档的配置
 [markup]
   # Syntax Highlighting (https://gohugo.io/content-management/syntax-highlighting)
   [markup.highlight]
