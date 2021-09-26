@@ -53,4 +53,4 @@ tf.plan
 .terraform*
 
 #hugo
-hugo/public/*
+**/public
