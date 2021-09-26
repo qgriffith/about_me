@@ -27,7 +27,7 @@ pipelines:
             name: Build Fitness Page
             image: python:3.9.7
             script:
-               - pip install -r requirements.txt
+               - pip install -r pycode/requirements.txt
                - apt-get update -y && apt-get install wget
                - apt-get -y install git
                - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.deb
