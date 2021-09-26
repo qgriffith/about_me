@@ -1,4 +1,5 @@
 baseURL = "https://qgriffith.me"
+buildDrafts = true
 defaultContentLanguage = "en"
 # theme
 theme = "FeelIt"
@@ -129,29 +130,28 @@ ignoreErrors = ["err-missing-comment-accesstoken", "err-missing-oembed-accesstok
         paramTitle = "Personal Information"
         # general description of your site
         # can be write with markdown style
-        description = "[FeelIt](https://github.com/khusika/FeelIt) is a **clean**, **elegant** but **advanced** blog theme for [Hugo](https://gohugo.io/) developed by [Khusika](https://khusika.com). It is based on the original [LoveIt Theme](https://github.com/dillonzq/LoveIt), [LeaveIt Theme](https://github.com/liuzc/LeaveIt), and [KeepIt Theme](https://github.com/Fastbyte01/KeepIt)."
+        description = "**Geek,husband, wana be runner, and Peloton junkie**"
         # description of your status
-        [[languages.en.params.about.status]]
-          faIcon = "fas fa-building"
-          title = "Company"
-          desc = "FeelIt"
         [[languages.en.params.about.status]]
           faIcon = "fas fa-briefcase fa-fw"
           title = "Occupation"
-          desc = "Freelancer"
+          desc = "DevOps Manager"
         [[languages.en.params.about.status]]
           title = "Location"
           faIcon = "fas fa-map-marker-alt"
-          desc = "Earth"
+          desc = "NC"
         # description of your parameter
         [[languages.en.params.about.parameter]]
-          language = "UI/UX"
+          language = "AWS"
           level = "80"
         [[languages.en.params.about.parameter]]
-          language = "HTML"
+          language = "Terraform"
+          level = "75"
+        [[languages.en.params.about.parameter]]
+          language = "Kubernetes"
           level = "70"
         [[languages.en.params.about.parameter]]
-          language = "Go"
+          language = "Python"
           level = "60"
 
       # Home page config
@@ -217,7 +217,7 @@ ignoreErrors = ["err-missing-comment-accesstoken", "err-missing-oembed-accesstok
     [params.header.title]
       # URL of the LOGO
       # LOGO 的 URL
-      logo = "images/avatar.png"
+      logo = "/images/avatar.png"
       # title name
       name = "Griffith"
       # you can add extra information before the name (HTML format is supported), such as icons
