@@ -37,7 +37,7 @@ pipelines:
                - cd ../../pycode/
                - python3 fitness_puller.py
             artifacts: 
-              - hugo/main/content/hobbies/*
+              - hugo/main/content/hobbies/**
               - hugo/main/static/images/*.jpg
         - step:
             name: Deploy Hugo
