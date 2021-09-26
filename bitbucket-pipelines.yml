@@ -52,6 +52,6 @@ pipelines:
               - cd hugo/main
               - hugo -v
               - hugo deploy
-              - cd hugo/resume
+              - cd ../resume
               - hugo -v
               - hugo deploy
