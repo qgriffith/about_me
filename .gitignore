@@ -54,6 +54,8 @@ tf.plan
 
 #hugo
 **/public
+**/fitness/*
 
 #python_scripts
 .env
+
