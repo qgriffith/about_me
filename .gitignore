@@ -54,3 +54,6 @@ tf.plan
 
 #hugo
 **/public
+
+#python_scripts
+.env
