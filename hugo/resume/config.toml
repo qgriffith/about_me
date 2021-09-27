@@ -37,7 +37,7 @@ theme = "hugo-devresume-theme"
         [[params.contact.list]]
         icon = "fas fa-globe"
         url = "https://qgriffith.me"
-        text = "about.qgriffith.me"
+        text = "qgriffith.me"
 
 
     [params.skills]
