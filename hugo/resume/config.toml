@@ -1,6 +1,6 @@
 # Page settings
 
-baseURL = "https://about.qgriffith.me/resume"
+baseURL = "https://qgriffith.me/resume"
 languageCode = "en"
 title = "Quenten Griffith Resume"
 theme = "hugo-devresume-theme"
@@ -36,7 +36,7 @@ theme = "hugo-devresume-theme"
         text = "qgriffith@gmail.com"
         [[params.contact.list]]
         icon = "fas fa-globe"
-        url = "https://about.qgriffith.me"
+        url = "https://qgriffith.me"
         text = "about.qgriffith.me"
 
 
