@@ -5,15 +5,25 @@ import urllib.request
 from dotenv import load_dotenv
 import os
 
-load_dotenv()  # take environment variables from .env.
+# take environment variables from .env.
+load_dotenv()  
 
 def pelly():
+    """Pulls data out of the Peloton API 
+        and outputs it in markdown to a file
+        read by hugo    
+    """
     PellyUser = os.environ.get("PELLY_USER")
     PellyPass = os.environ.get("PELLY_PASS")
     conn = pylotoncycle.PylotonCycle(PellyUser, PellyPass)
+
+    #get only the last workout TODO:Update to all work outs for the day
     last_workout = conn.GetRecentWorkouts(1)
-    me = conn.GetMe()
-    profile_url = "https://members.onepeloton.com/members/{0}/overview".format(me['username'])
+
+    #returns all your profile data
+    me = conn.GetMe() 
+
+    profile_url = "https://members.onepeloton.com/members/{0}/overview".format(me['username']) 
     total_workouts = me['total_workouts']
     hugo_file = "../hugo/main/content/hobbies/fitness/index.md"
     static_files = "../hugo/main/static/images/"
@@ -26,12 +36,15 @@ def pelly():
     
     mdFile.new_header(level=3, title='Last Workout')
     with open(hugo_file, "a+") as f:
-        for w in last_workout: #there will ever only be a single workout in the current config but may change it to the last 3
+        # There will ever only be a single workout in the current config but may change it to all workouts for the day
+        for w in last_workout: 
             workout_id = w['id']
             resp = conn.GetWorkoutById(workout_id)
             class_image = resp['ride']['image_url']
             name = resp['name']
             title = resp['ride']['title']
+            
+            # we only get the ID of the instructor and have to look up their name in a dict pulled from the api
             instructor = conn.instructor_id_dict[resp['ride']['instructor_id']]
             coach=instructor['name']
             
