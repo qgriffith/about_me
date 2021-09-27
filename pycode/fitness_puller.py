@@ -43,7 +43,7 @@ def pelly():
             mdFile.new_paragraph("**Workout Type:** {0}".format(name))
             mdFile.new_paragraph("**Title:** {0}".format(title))
             mdFile.new_paragraph("**Instructor:** {0}".format(coach))
-            mdFile.new_paragraph("**Badges:**")
+            mdFile.new_paragraph("**Badges:** {0}".format(len(resp['achievement_templates'])))
 
             for badge in resp['achievement_templates']:
                 sanitze_badge = badge['name'].replace(" ", "")
