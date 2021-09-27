@@ -4,6 +4,7 @@ baseURL = "https://qgriffith.me/resume"
 languageCode = "en"
 title = "Quenten Griffith Resume"
 theme = "hugo-devresume-theme"
+googleAnalytics = "G-XH7WGNT0S6"
 
 
 [params]
