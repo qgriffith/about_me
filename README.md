@@ -13,5 +13,5 @@ Deplyment is managed via Bitbucket Pipelines and is automatically deploy the web
 * Add Strava data to the python script
 * Add a custom task to the pipeline that only generats the new data
 * Remove the hugo step that stubs out the template and move it to python to auto-generate
-* Add a link to the Peloton class
+* ~~Add a link to the Peloton class~~
 * Pull the full day of classes instead of the most recent single class

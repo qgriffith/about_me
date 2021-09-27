@@ -23,7 +23,7 @@ def pelly():
     #returns all your profile data
     me = conn.GetMe() 
 
-    profile_url = "https://members.onepeloton.com/members/{0}/overview".format(me['username']) 
+    profile_url = "https://members.onepeloton.com/members/{0}/overview".format(me['username'])
     total_workouts = me['total_workouts']
     hugo_file = "../hugo/main/content/hobbies/fitness/index.md"
     static_files = "../hugo/main/static/images/"
@@ -43,7 +43,10 @@ def pelly():
             class_image = resp['ride']['image_url']
             name = resp['name']
             title = resp['ride']['title']
-            
+            discipline=resp['fitness_discipline']
+            classId=resp['ride']['id']
+            class_url = "https://members.onepeloton.com/classes/{0}?classId={1}&modal=classDetailsModal".format(discipline, classId)
+
             # we only get the ID of the instructor and have to look up their name in a dict pulled from the api
             instructor = conn.instructor_id_dict[resp['ride']['instructor_id']]
             coach=instructor['name']
@@ -54,7 +57,7 @@ def pelly():
             mdFile.new_paragraph(Html.image(path=classimage_url, size='x250'))
 
             mdFile.new_paragraph("**Workout Type:** {0}".format(name))
-            mdFile.new_paragraph("**Title:** {0}".format(title))
+            mdFile.new_paragraph("**Title:** " + mdFile.new_inline_link(link=class_url, text=title, bold_italics_code='b'))
             mdFile.new_paragraph("**Instructor:** {0}".format(coach))
             mdFile.new_paragraph("**Badges:** {0}".format(len(resp['achievement_templates'])))
 
