@@ -248,7 +248,7 @@ ignoreErrors = ["err-missing-comment-accesstoken", "err-missing-oembed-accesstok
   [params.footer]
     enable = true
     # Custom content (HTML format is supported)
-    custom = ''
+    custom = '<a href="https://bitbucket.org/qgriffith/about_me/src/master/" target="_blank">Built with code</a>'
     # whether to show Hugo and theme info
     hugo = false
     # whether to show copyright info
@@ -549,7 +549,7 @@ ignoreErrors = ["err-missing-comment-accesstoken", "err-missing-oembed-accesstok
     XMPP = ""
     Matrix = ""
     Bilibili = ""
-    Email = "qgriffith@gmail.comd"
+    Email = "qgriffith@gmail.com"
     Resume = ""
     xda = ""
     RSS = false
