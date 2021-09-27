@@ -53,4 +53,9 @@ tf.plan
 .terraform*
 
 #hugo
-hugo/public/*
+**/public
+**/fitness/*
+class.jpg
+#python_scripts
+.env
+

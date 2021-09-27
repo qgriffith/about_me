@@ -1,0 +1,294 @@
+# Page settings
+
+baseURL = "https://qgriffith.me/resume"
+languageCode = "en"
+title = "Quenten Griffith Resume"
+theme = "hugo-devresume-theme"
+
+
+[params]
+    author = "CowboySmall"
+    description = "DevResume - Bootstrap 4 Resume/CV Template For Software Developers"
+
+
+    primaryColor = "#54B689"
+    textPrimaryColor = "#292929"
+
+
+    [params.profile]
+        enable = true
+        name = "Quenten Griffith"
+        tagline = "Senior DevOps Manger"
+        avatar = "images/avatar.png"
+
+
+    [params.contact]
+        enable = true
+        location = "North Carolina"
+
+        [[params.contact.list]]
+        icon = "fas fa-phone-square"
+        url = "tel:#"
+        text = "919 824 6687"
+        [[params.contact.list]]
+        icon = "fas fa-envelope-square"
+        url = "mailto:qgriffith@gmail.com"
+        text = "qgriffith@gmail.com"
+        [[params.contact.list]]
+        icon = "fas fa-globe"
+        url = "https://qgriffith.me"
+        text = "qgriffith.me"
+
+
+    [params.skills]
+        enable = true
+
+        [[params.skills.list]]
+        title = "Technical"
+        [[params.skills.list.items]]
+        details = "AWS"
+        [[params.skills.list.items]]
+        details = "Terraform"
+        [[params.skills.list.items]]
+        details = "Terragrunt"
+        [[params.skills.list.items]]
+        details = "Ansible"
+        [[params.skills.list.items]]
+        details = "Kubernetes EKS"
+        [[params.skills.list.items]]
+        details = "Packer"
+        [[params.skills.list.items]]
+        details = "Helm"
+        [[params.skills.list.items]]
+        details = "Docker"
+        [[params.skills.list.items]]
+        details = "Bitbucket Pipelines"        
+        [[params.skills.list.items]]
+        details = "Python"        
+        [[params.skills.list.items]]
+        details = "Linux"   
+         [[params.skills.list.items]]        
+        details = "Lead and deliver complex software systems"
+
+        [[params.skills.list]]
+        title = "Professional"
+        [[params.skills.list.items]]
+        details = "Effective communication"
+        [[params.skills.list.items]]
+        details = "Team player"
+        [[params.skills.list.items]]
+        details = "Strong problem solver"
+        [[params.skills.list.items]]
+        details = "Good time management"
+
+    [params.education]
+        enable = false
+
+    [params.awards]
+        enable = false
+
+    [params.languages]
+        enable = false
+
+    [params.interests]
+        enable = true
+
+        [[params.interests.list]]
+        name = "Running"
+        [[params.interests.list]]
+        name = "Gaming"
+        [[params.interests.list]]
+        name = "Hiking"
+        [[params.interests.list]]
+        name = "Travelling"
+
+    [params.summary]
+        enable = true
+        text = "Knowledgeable and skilled Technical Leader has a keen ability for software development and supervision. Ability to use his 18 years technical experience and 5 years leadership experience to help the company meet or exceed short and long-term goals as well as act as a mentor to the team and help grow."
+
+
+    [params.experience]
+        enable = true
+
+        [[params.experience.list]]
+        title = "Lead of DevOps"
+        dates = "June 2020 - Present"
+        company = "Epic Games"
+        details = "Manager of the IT DevOps and Hosted Service team. Leading and providing guidance in cloud and DevOps practices as well as owning the Atlasian suite of products used by all of Epic."
+        [[params.experience.list.items]]
+        details = "Lead a group of DevOps, SRE, and developers to develop, and host internal solutions"
+        [[params.experience.list.items]]
+        details = "Setting standards for AWS, Terraform, Ansible"
+        [[params.experience.list.items]]
+        details = "Helping level up others in IT on cloud and DevOps technologies by creating training and guides"
+        [[params.experience.list.items]]
+        details = "Partnering with InfoSec to adopt secure principles for all our internal applications and deployments"
+        [[params.experience.list.items]]
+        details = "Managing the Jenkins and deployment frameworks for all of IT"
+        [[params.experience.list.items]]
+        details = "Managing the 125+ AWS accounts with in IT"
+        [[params.experience.list.items]]
+        details = "Partnering with other teams outside of IT in architecting and deploying their solutions to AWS"
+
+        [[params.experience.list]]
+        title = "Global Director of Operations and Development"
+        dates = "May 2019 - June 2020"
+        company = "Xylem"
+        details = "Director of a global DevOps team leading teams in the US, India, Singapore, Sweden and China. Responsible for bringing together these dispersed teams as one."
+        [[params.experience.list.items]]
+        details = "Lead remote teams in India and China, as well as the US creating a single Global DevOps team"        
+        [[params.experience.list.items]]
+        details = "Setting standards and guidelines for all cloud based applications"
+        [[params.experience.list.items]]
+        details = "Working with over twenty development teams spread across the organization to bring their applications under the Global DevOps standards."
+      [[params.experience.list.items]]
+        details = "Investigating and adopting technology to handle massive enterprise deployments on kubernetes and in multiple clouds"
+      [[params.experience.list.items]]
+        details = "Creating a multi-cloud framework in terraform to rapidly bring up infrastructure for new applications"
+      [[params.experience.list.items]]
+        details = "Setting security guidelines for cloud based deployments"                              
+
+        [[params.experience.list]]
+        title = "Senior DevOps Manager"
+        dates = "April 2018 - May 2019"
+        company = "Xylem"
+        details = "Manager of an eight-person DevOps team with local and remote reports. Responsible for standardizing and automating deployments across several projects and divisions."
+        [[params.experience.list.items]]
+        details = "Lead an initiative to implement kubernetes across the enterprise. Rolled out a plan to convert all our applications to docker containers running on AWS EKS"
+        [[params.experience.list.items]]
+        details = "Created helm charts for over 200 applications across 37 projects to be used to automate the deployment to Kubernetes"
+      [[params.experience.list.items]]
+        details = "Introduced a new way for DevOps to work with the Development teams by embedding a DevOps person into each of the Development sprints"
+      [[params.experience.list.items]]
+        details = "Lead and implemented an effort to switch build and deployments from Jenkins to Bitbucket Pipelines"
+      [[params.experience.list.items]]
+        details = "Worked with various vendors to reduce license cost"     
+       [[params.experience.list.items]]
+        details = "Created custom training videos on DevOps technologies to help onboard future DevOps resources as well as provide training for DevOps resources across the globe."          
+
+        [[params.experience.list]]
+        title = "Senior DevOps Engineer"
+        dates = "September 2017 - April 2018"
+        company = "Xylem"
+        details = "Cloud Engineer working with AWS, Salt, and Jenkins to standardize and automate deployments across several projects and divisions."
+       [[params.experience.list.items]]
+        details = "Established Infrastructure as Code using Terraform for all deployments in AWS"           
+        [[params.experience.list.items]]
+        details = "Lead DevOps effort on new greenfield application."
+        [[params.experience.list.items]]
+        details = "Re Architected the deployment process so that every new application used the same framework. Allowing for easy onboarding."
+      [[params.experience.list.items]]
+        details = "Introduced a new way for DevOps to work with the Development teams by embedding a DevOps person into each of the Development sprints"
+      [[params.experience.list.items]]
+        details = "Converted deployments to use RPM’s allowing for easier installations"
+      [[params.experience.list.items]]
+        details = "Brought in Sumologic and Datadog to replace home grown systems"     
+ 
+         [[params.experience.list]]
+        title = "Senior Lead DevOps Engineer"
+        dates = "Feburary 2016 - September 2017"
+        company = "On-Site"
+        details = "Remote DevOps Engineer working on continuous integration and deployments and planning the move from a legacy data center to Google Cloud. Lead the DevOps team and helped drive decisions regarding technologies and data center requirements. "
+  
+        [[params.experience.list]]
+        title = "Senior DevOps Engineer"
+        dates = "April 2015 - September 2017"
+        company = "Say Media"
+        details = "Remote DevOps Engineer in charge of orchestrating moving from a legacy data center to AWS using Terraform"
+
+        [[params.experience.list]]
+        title = "Publishing Engineer"
+        dates = "Feburary 2014 - April 2015"
+        company = "Say Media"
+        details = "Remote Publishing and DevOps Engineer for Bethesda Game Studio. Working on the deployments and automation for a large scale MMORPG."
+        
+        [[params.experience.list]]
+        title = "DevOps Engineer"
+        dates = "October 2013 - Feburary 2014"
+        company = "Live Gamer"
+        details = "DevOps Automation Engineer for a micro-transaction and gamification service provider."
+        
+        [[params.experience.list]]
+        title = "Senior DevOps Engineer"
+        dates = "June 2013 - October 2013"
+        company = "Republic Wireless"
+        details = "DevOps Engineer for a communications and software company. Working with operations, and development, created tools and processes to manage customer issues and code deployments."
+
+        [[params.experience.list]]
+        title = "Engineering Services Architect Lead"
+        dates = "Feburary 2011 - June 2013"
+        company = "Republic Wireless"
+        details = "Engineering Services Architect, for a large SaaS based network monitoring offering. Working with development, service delivery, and management,  Designed, tested and documented solutions to integrate and improve our current product. Focused was around taking manual procedures and devising a way to automate them.  Along with bringing in new solutions to help support the SaaS support teams."
+
+        [[params.experience.list]]
+        title = "Senior Unix Engineer"
+        dates = "March 2006 - Feburary 2011"
+        company = "Blue Cross Blue Shield NC"
+        details = "Unix System Matter Expert for the Application Middleware team. Supported 235 AIX servers, and 8 Red Hat Linux servers, for the Middleware team. Cross trained in, Seebeyond JCAPS, Seebeyond SRE, Websphere MQ, and Serena Dimensions. Provided on-call support for all Middleware applications"      
+
+        [[params.experience.list]]
+        title = "Unix Engineer"
+        dates = "Janurary 2002- March 2006"
+        company = "Cincinnati Finacial Corp"
+        details = "AIX and Linux system security administrator for 130 systems. Worked with internal and external audits to assure systems meet SOX and HIPAA regulations."                     
+
+    [params.projects]
+        enable = false
+
+    [params.information]
+        enable = false
+
+    [params.social]
+        enable = true
+
+        [[params.social.list]]
+        icon = "fab fa-bitbucket"
+        url = "https://bitbucket.org/qgriffith/"
+        title = "Projects"
+        [[params.social.list]]
+        icon = "fas fa-code"
+        url = "https://bitbucket.org/qgriffith/about_me"
+        title = "Site built with Code"        
+        [[params.social.list]]
+        icon = "fab fa-linkedin"
+        url = "https://www.linkedin.com/in/quenten-griffith-1682493/"
+        title = "Profile"
+
+[deployment]
+# By default, files are uploaded in an arbitrary order.
+# Files that match the regular expressions in the "Order" list
+# will be uploaded first, in the listed order.
+order = [".jpg$", ".gif$"]
+
+
+[[deployment.targets]]
+# An arbitrary name for this target.
+name = "resume"
+
+# If you are using a CloudFront CDN, deploy will invalidate the cache as needed.
+#cloudFrontDistributionID = "EMM94YWZKRLPO"
+
+#S3
+URL = "s3://qgriffith-about-me-site?region=us-east-2&prefix=resume/"
+
+
+[[deployment.matchers]]
+# Cache static assets for 1 year.
+pattern = "^.+\\.(js|css|svg|ttf)$"
+cacheControl = "max-age=31536000, no-transform, public"
+gzip = true
+
+[[deployment.matchers]]
+pattern = "^.+\\.(png|jpg)$"
+cacheControl = "max-age=31536000, no-transform, public"
+gzip = false
+
+[[deployment.matchers]]
+# Set custom content type for /sitemap.xml
+pattern = "^sitemap\\.xml$"
+contentType = "application/xml"
+gzip = true
+
+[[deployment.matchers]]
+pattern = "^.+\\.(html|xml|json)$"
+gzip = true

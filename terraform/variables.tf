@@ -12,3 +12,8 @@ variable "subdomain" {
   description = "Subdomain to use as the CNAME"
   default     = "about"
 }
+
+variable "domain" {
+  description = "Domain to use as the CNAME"
+  default     = "qgriffith.me"
+}
