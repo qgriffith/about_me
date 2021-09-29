@@ -12,7 +12,6 @@ definitions:
           - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.deb
           - dpkg -i hugo*.deb
           - cd hugo/main
-          - hugo new hobbies/fitness/index.md
           - cd ../../pycode/
           - python3 fitness_puller.py
         artifacts: 
