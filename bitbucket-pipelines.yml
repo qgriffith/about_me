@@ -1,5 +1,38 @@
 image: hashicorp/terraform:1.0.7
 
+definitions:
+  steps:
+    - step: &Build-Fitness-Page
+        name: Build Fitness Page
+        image: python:3.9.7
+        script:
+          - pip install -r pycode/requirements.txt
+          - apt-get update -y && apt-get install wget
+          - apt-get -y install git
+          - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.deb
+          - dpkg -i hugo*.deb
+          - cd hugo/main
+          - hugo new hobbies/fitness/index.md
+          - cd ../../pycode/
+          - python3 fitness_puller.py
+        artifacts: 
+          - hugo/main/content/hobbies/**
+          - hugo/main/static/images/*.jpg
+    - step: &Deploy-Hugo
+        name: Deploy Hugo
+        image: atlassian/default-image:2
+        deployment: Production
+        script:
+          - apt-get update -y && apt-get install wget
+          - apt-get -y install git
+          - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.deb
+          - dpkg -i hugo*.deb
+          - cd hugo/main
+          - hugo -v
+          - hugo deploy
+          - cd ../resume
+          - hugo -v
+          - hugo deploy
 pipelines:
   default:
     - parallel:
@@ -14,6 +47,10 @@ pipelines:
               # Run a security scan for sensitive data.
               # See more security tools at https://bitbucket.org/product/features/pipelines/integrations?&category=security
               - pipe: atlassian/git-secrets-scan:0.4.3
+  custom:
+    build_deploy:
+      - step: *Build-Fitness-Page
+      - step: *Deploy-Hugo
   branches:
     master:
         - step:
@@ -23,35 +60,6 @@ pipelines:
               - terraform init
               - terraform plan
               - terraform apply -auto-approve
-        - step:
-            name: Build Fitness Page
-            image: python:3.9.7
-            script:
-               - pip install -r pycode/requirements.txt
-               - apt-get update -y && apt-get install wget
-               - apt-get -y install git
-               - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.deb
-               - dpkg -i hugo*.deb
-               - cd hugo/main
-               - hugo new hobbies/fitness/index.md
-               - cd ../../pycode/
-               - python3 fitness_puller.py
-            artifacts: 
-              - hugo/main/content/hobbies/**
-              - hugo/main/static/images/*.jpg
-        - step:
-            name: Deploy Hugo
-            trigger: manual
-            image: atlassian/default-image:2
-            deployment: Production            
-            script:
-              - apt-get update -y && apt-get install wget
-              - apt-get -y install git
-              - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.deb
-              - dpkg -i hugo*.deb
-              - cd hugo/main
-              - hugo -v
-              - hugo deploy
-              - cd ../resume
-              - hugo -v
-              - hugo deploy
+
+        - step: *Build-Fitness-Page
+        - step: *Deploy-Hugo 
