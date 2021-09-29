@@ -50,7 +50,7 @@ Thumbs.db
 
 # Terraform
 tf.plan
-.terraform*
+**/.terraform*
 
 #hugo
 **/public
