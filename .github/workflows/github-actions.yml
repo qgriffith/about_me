@@ -1,6 +1,5 @@
 name: build-page
-on:
-  workflow_dispatch:
+on: [push]
 jobs:
    run-python:
      runs-on: ubuntu-latest
