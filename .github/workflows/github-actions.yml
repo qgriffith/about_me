@@ -15,5 +15,4 @@ jobs:
            PELLY_PASS: ${{ secrets.PELLY_PASS }}
        - run: pip install -r pycode/requirements.txt
        - run: cd pycode/
-       - run: python3 fitness_puller.py
-          
+       - run: python3 fitness_puller.py          
