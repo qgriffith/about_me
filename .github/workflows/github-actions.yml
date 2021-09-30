@@ -9,9 +9,10 @@ jobs:
          with:
             python-version: '3.x'
             architecture: 'x64'
-         env:
-           PELLY_USER: '${{ secrets.PELLY_USER }}'
-           PELLY_PASS: '${{ secrets.PELLY_PASS }}'
-       - run: env
        - run: pip install -r pycode/requirements.txt
-       - run: cd pycode/ && python3 fitness_puller.py 
+       - shell: bash
+         env:
+            PELLY_USER: '${{ secrets.PELLY_USER }}'
+            PELLY_PASS: '${{ secrets.PELLY_PASS }}'
+         run: | 
+           echo $PELLY_USER && cd pycode/ && python3 fitness_puller.py 
