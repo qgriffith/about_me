@@ -2,7 +2,7 @@ name: build-page
 on: 
   push:
     paths:
-      - '!terraform/**'
+     - '!terraform/**'
 jobs:
    run-python:
      runs-on: ubuntu-latest
@@ -30,5 +30,3 @@ jobs:
            AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
          run: |
            cd hugo/main && hugo -v && hugo deploy && cd ../resume && hugo -v && hugo deploy
-
-
