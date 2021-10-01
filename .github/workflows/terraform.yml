@@ -36,6 +36,8 @@ jobs:
         working-directory: terraform/
         run: terraform apply -auto-approve
   build_deploy:
+    name: 'Build and Deploy Hugo Site'
+    runs-on: ubuntu-latest
     env:
       PELLY_USER: '${{ secrets.PELLY_USER }}'
       PELLY_PASS: '${{ secrets.PELLY_PASS }}'
