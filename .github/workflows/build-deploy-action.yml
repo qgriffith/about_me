@@ -1,8 +1,10 @@
 name: build-page
-on: 
+
+on:
   push:
-    paths:
+    paths:     
      - '!terraform/**'
+
 jobs:
    run-python:
      runs-on: ubuntu-latest
