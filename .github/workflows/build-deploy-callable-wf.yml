@@ -11,18 +11,14 @@ on:
       PELLY_USER:
         description: "Peloton User"
         required: true
-        type: string
       PELLY_PASS:
         description: "Peloton Password"
         required: true
-        type: string
       AWS_ACCESS_KEY_ID:
         description: "AWS Key"
         required: true
-        type: string
       AWS_SECRET_ACCESS_KEY:
         required: true
-        type: string
 
 jobs:
    run-python:
