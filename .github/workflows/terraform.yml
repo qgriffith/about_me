@@ -36,4 +36,4 @@ jobs:
         working-directory: terraform/
         run: terraform apply -auto-approve
   build_deploy:
-    uses: qgriffith/about_me/.github/workflows/build-deploy-callable-wf.yml@${GITHUB_REF}
+    uses: qgriffith/about_me/.github/workflows/build-deploy-callable-wf.yml@features/gh_actions
