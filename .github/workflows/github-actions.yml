@@ -24,7 +24,7 @@ jobs:
        - shell: bash
          env: 
            AWS_ACCESS_KEY_ID: '${{ secrets.AWS_ACCESS_KEY_ID }}'
-           AWS__SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
+           AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
          run: |
            cd hugo/main && hugo -v && hugo deploy && cd ../resume && hugo -v && hugo deploy
 
