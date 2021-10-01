@@ -1,8 +1,8 @@
 name: 'Terraform'
 
 on:
-   push:
-     paths:
+  push:
+    paths:     
      - 'terraform/**'
 
 jobs:

@@ -14,6 +14,6 @@ variable "subdomain" {
 }
 
 variable "domain" {
-  description = "Domain to use as the CNAME"
+  description = "Domain to use as the root CNAME"
   default     = "qgriffith.me"
 }
