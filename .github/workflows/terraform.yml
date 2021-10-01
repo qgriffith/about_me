@@ -36,4 +36,4 @@ jobs:
         working-directory: terraform/
         run: terraform apply -auto-approve
       - name: Use Build and Deploy local workflow
-        uses: ./.github/workflows/build-deploy-action.yml     
+        uses: qgriffith/about_me/.github/workflows/build-deploy-action.yml@features/gh_actions
