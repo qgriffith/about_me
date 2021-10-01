@@ -1,6 +1,9 @@
 name: 'Terraform'
 
-on: [push]
+on:
+   push:
+     paths:
+     - 'terraform/**'
 
 jobs:
   terraform:
@@ -32,5 +35,7 @@ jobs:
       - name: Run Plan
         working-directory: terraform/
         run: terraform apply -auto-approve
+      - name: Use Build and Deploy local action
+        uses: ./.github/actions/build-deploy-action
         
 
