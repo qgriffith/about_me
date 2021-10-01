@@ -35,7 +35,5 @@ jobs:
       - name: Run Plan
         working-directory: terraform/
         run: terraform apply -auto-approve
-      - name: Use Build and Deploy local action
-        uses: ./.github/actions/build-deploy-action
-        
-
+      - name: Use Build and Deploy local workflow
+        uses: ./.github/workflows/build-deploy-action.yml     
