@@ -35,7 +35,7 @@ jobs:
       - name: Run Plan
         working-directory: terraform/
         run: terraform apply -auto-approve
-  build_deploy:
+  build_deploy_after_tf:
     needs: terraform
     uses: qgriffith/about_me/.github/workflows/build-deploy-callable-wf.yml@features/gh_actions
     with:
