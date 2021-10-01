@@ -24,10 +24,10 @@ jobs:
       - name: Install TF Binary
         run: sudo unzip -o terraform_${TF_VERSION}_linux_amd64.zip -d /usr/local/bin/
       - name: Validate Terraform
-        run: terraform init && terraform validate
+        run: cd terraform && terraform init && terraform validate
       - name: Show Plan
         run: terraform plan -out tf.plan
       - name: Run Plan
-        run: terraform apply plan tf.plan
+        run: cd terraform && terraform apply plan tf.plan
         
 
