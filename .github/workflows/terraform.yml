@@ -22,7 +22,7 @@ jobs:
       - name: Downlaod TF Binary
         run: wget https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip
       - name: Install TF Binary
-        run: unzip terraform_${TF_VERSION}_linux_amd64.zip && sudo mv terraform /usr/local/bin/
+        run: sudo unzip -o terraform_${TF_VERSION}_linux_amd64.zip -d /usr/local/bin/
       - name: Validate Terraform
         run: terraform init && terraform validate
         
