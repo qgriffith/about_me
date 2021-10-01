@@ -1,10 +1,7 @@
-name: build-page
+name: Reusable build deploy workflow
 
 on:
-  push:
-    paths:
-     - '**/*'
-     - '!terraform/**'
+  workflow_call:
 
 jobs:
    run-python:
