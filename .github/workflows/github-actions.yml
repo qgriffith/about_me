@@ -18,7 +18,7 @@ jobs:
             PELLY_PASS: '${{ secrets.PELLY_PASS }}'
          run: | 
            cd pycode/ && python3 fitness_puller.py
-       - run: apt-get update -y && apt-get install wget && apt-get install git
+       - run: sudo apt-get update -y && sudo apt-get install wget &&  sudo apt-get install git
        - run: wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.deb
        - run: dpkg -i hugo*.deb
        - shell: bash
