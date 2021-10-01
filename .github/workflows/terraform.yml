@@ -35,5 +35,5 @@ jobs:
       - name: Run Plan
         working-directory: terraform/
         run: terraform apply -auto-approve
-    build_deploy:
-        uses: ${{GITHUB_REPOSITORY}}/.github/workflows/build-deploy-callable-wf.yml@${{GITHUB_REF}}
+  build_deploy:
+    uses: ${{GITHUB_REPOSITORY}}/.github/workflows/build-deploy-callable-wf.yml@${{GITHUB_REF}}
