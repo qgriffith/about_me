@@ -3,6 +3,8 @@ on: [push]
 jobs:
    run-python:
      runs-on: ubuntu-latest
+     env:
+      HUGO_VERSION: '0.88.1'
      steps:
        - uses: actions/checkout@v2
        - uses: actions/setup-python@v2
@@ -15,4 +17,15 @@ jobs:
             PELLY_USER: '${{ secrets.PELLY_USER }}'
             PELLY_PASS: '${{ secrets.PELLY_PASS }}'
          run: | 
-           echo $PELLY_USER && cd pycode/ && python3 fitness_puller.py 
+           cd pycode/ && python3 fitness_puller.py
+       - run: apt-get update -y && apt-get install wget && apt-get install git
+       - run: wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.deb
+       - run: dpkg -i hugo*.deb
+       - shell: bash
+         env: 
+           AWS_ACCESS_KEY: '${{AWS_ACCESS_KEY}}'
+           AWS__SECRET_ACCESS_KEY: '${{AWS_SECRET_ACCESS_KEY}}'
+         run: |
+           cd hugo/main && hugo -v && hugo deploy && cd ../resume && hugo -v && hugo deploy
+
+
