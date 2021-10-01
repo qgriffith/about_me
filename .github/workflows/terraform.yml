@@ -35,5 +35,5 @@ jobs:
       - name: Run Plan
         working-directory: terraform/
         run: terraform apply -auto-approve
-      - name: Use Build and Deploy local workflow
-        uses: qgriffith/about_me/.github/workflows/build-deploy-action.yml@features/gh_actions
+    build_deploy:
+        uses: ${{GITHUB_REPOSITORY}}/.github/workflows/build-deploy-callable-wf.yml@${{GITHUB_REF}}
