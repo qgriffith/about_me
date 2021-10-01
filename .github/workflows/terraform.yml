@@ -35,6 +35,8 @@ jobs:
       - name: Run Plan
         working-directory: terraform/
         run: terraform apply -auto-approve
+      - name: echo
+        run: echo $GITHUB_REPOSITORY && echo $GITHUB_REF
   build_deploy:
     needs: terraform
     uses: qgriffith/about_me/.github/workflows/build-deploy-callable-wf.yml@features/gh_actions
