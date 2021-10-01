@@ -39,7 +39,7 @@ jobs:
         run: echo $GITHUB_REPOSITORY && echo $GITHUB_REF
   build_deploy:
     needs: terraform
-    uses: ${{ github.repository }}/.github/workflows/build-deploy-callable-wf.yml@features/gh_actions
+    uses: qgriffith/about_me/.github/workflows/build-deploy-callable-wf.yml@features/gh_actions
     with:
       HUGO_VERSION: '0.88.1'
     secrets:
