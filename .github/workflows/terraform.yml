@@ -1,7 +1,6 @@
 name: 'Terraform'
 
-on:
-  push: [push]
+on: [push]
 
 jobs:
   terraform:
