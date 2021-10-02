@@ -50,11 +50,11 @@ Thumbs.db
 
 # Terraform
 tf.plan
-.terraform*
+**/.terraform*
 
 #hugo
 **/public
-**/fitness/*
+**/fitness/index.md
 class.jpg
 #python_scripts
 .env

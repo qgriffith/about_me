@@ -1,0 +1,47 @@
+name: 'Terraform'
+
+on:
+  push:
+    paths:     
+     - 'terraform/**'
+
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+    env:
+      TF_VERSION: '1.0.7'
+      AWS_ACCESS_KEY_ID: '${{ secrets.AWS_ACCESS_KEY_ID }}'
+      AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install needed Packages
+        run: sudo apt-get update -y && sudo apt-get install wget && sudo apt-get install unzip
+      - name: Downlaod TF Binary
+        run: wget https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip
+      - name: Install TF Binary
+        run: sudo unzip -o terraform_${TF_VERSION}_linux_amd64.zip -d /usr/local/bin/
+      - name: Validate Terraform
+        working-directory: terraform/
+        run: terraform init && terraform validate
+      - name: Show Plan
+        working-directory: terraform/
+        run:  terraform plan
+      - name: Run Plan
+        working-directory: terraform/
+        run: terraform apply -auto-approve
+  build_deploy_after_tf:
+    needs: terraform
+    uses: qgriffith/about_me/.github/workflows/build-deploy-callable-wf.yml@features/gh_actions
+    with:
+      HUGO_VERSION: '0.88.1'
+    secrets:
+      PELLY_USER: ${{ secrets.PELLY_USER }}
+      PELLY_PASS: ${{ secrets.PELLY_PASS }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

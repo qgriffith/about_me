@@ -4,6 +4,7 @@ from mdutils import Html
 import urllib.request
 from dotenv import load_dotenv
 import os
+import datetime
 
 # take environment variables from .env.
 load_dotenv()  
@@ -28,14 +29,24 @@ def pelly():
     hugo_file = "../hugo/main/content/hobbies/fitness/index.md"
     static_files = "../hugo/main/static/images/"
 
+   
     mdFile = MdUtils(file_name=hugo_file)
+    # create the hugo header which elimantes needing to have hugo stub the page out
+    mdFile.new_paragraph('---')
+    mdFile.new_paragraph('title: "Fitness"')
+    mdFile.new_paragraph("date: {0}".format(datetime.date.today()))
+    mdFile.new_paragraph("draft: false")
+    mdFile.new_paragraph('tags:  ["peloton", "fitness"]')
+    mdFile.new_paragraph('categories:  ["fitness"]')
+    mdFile.new_paragraph('---')
+
     mdFile.new_header(level=1, title='Peloton')
     mdFile.new_header(level=2, title='Profile')
     mdFile.new_paragraph("**Profile**: " +  mdFile.new_inline_link(link=profile_url, text=me['username'], bold_italics_code='b'))
     mdFile.new_paragraph("**Total Workouts:** {0}".format(total_workouts))
     
     mdFile.new_header(level=3, title='Last Workout')
-    with open(hugo_file, "a+") as f:
+    with open(hugo_file, "w+") as f:
         # There will ever only be a single workout in the current config but may change it to all workouts for the day
         for w in last_workout: 
             workout_id = w['id']
