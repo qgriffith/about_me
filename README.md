@@ -8,9 +8,9 @@ Deplyment is managed via Bitbucket Pipelines and is automatically deploy the web
 
 #### TODO
 * Add Unit test to the python script
-* Add a step in the pipeline to invalidate CF cache on deploy
+* ~~Add a step in the pipeline to invalidate CF cache on deploy~~
 * Add logging output to the python script
-* Look at switching to GitHub Actions
+* ~~Look at switching to GitHub Actions~~
 * Add Strava data to the python script
 * ~~Add a custom task to the pipeline that only generats the new data~~
 * ~~Remove the hugo step that stubs out the template and move it to python to auto-generate~~
