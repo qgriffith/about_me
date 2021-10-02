@@ -248,7 +248,7 @@ googleAnalytics = "G-XH7WGNT0S6"
         title = "Projects"
         [[params.social.list]]
         icon = "fas fa-code"
-        url = "https://bitbucket.org/qgriffith/about_me"
+        url = "https://github.com/qgriffith/about_me"
         title = "Site built with Code"        
         [[params.social.list]]
         icon = "fab fa-linkedin"
