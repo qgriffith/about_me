@@ -1,0 +1,46 @@
+name: Reusable build deploy workflow
+
+on:
+  workflow_call:
+    inputs:
+      HUGO_VERSION:
+        description: 'Version of hugo to install'
+        default: '0.88.1'
+        type: string
+    secrets:
+      PELLY_USER:
+        description: "Peloton User"
+        required: true
+      PELLY_PASS:
+        description: "Peloton Password"
+        required: true
+      AWS_ACCESS_KEY_ID:
+        description: "AWS Key"
+        required: true
+      AWS_SECRET_ACCESS_KEY:
+        required: true
+
+jobs:
+   run-python:
+     runs-on: ubuntu-latest
+     defaults:
+       run:
+         shell: bash
+     env:
+      HUGO_VERSION: ${{ inputs.HUGO_VERSION}}
+      PELLY_USER: '${{ secrets.PELLY_USER }}'
+      PELLY_PASS: '${{ secrets.PELLY_PASS }}'
+      AWS_ACCESS_KEY_ID: '${{ secrets.AWS_ACCESS_KEY_ID }}'
+      AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
+     steps:
+       - uses: actions/checkout@v2
+       - uses: actions/setup-python@v2
+         with:
+            python-version: '3.x'
+            architecture: 'x64'
+       - run: pip install -r pycode/requirements.txt
+       - run: cd pycode/ && python3 fitness_puller.py
+       - run: sudo apt-get update -y && sudo apt-get install wget &&  sudo apt-get install git
+       - run: wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.deb
+       - run: sudo dpkg -i hugo*.deb
+       - run: cd hugo/main && hugo -v && hugo deploy && cd ../resume && hugo -v && hugo deploy

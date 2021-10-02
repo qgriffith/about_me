@@ -267,7 +267,7 @@ order = [".jpg$", ".gif$"]
 name = "resume"
 
 # If you are using a CloudFront CDN, deploy will invalidate the cache as needed.
-#cloudFrontDistributionID = "EMM94YWZKRLPO"
+cloudFrontDistributionID = "E125NIHTJQ9BXH"
 
 #S3
 URL = "s3://qgriffith-about-me-site?region=us-east-2&prefix=resume/"
