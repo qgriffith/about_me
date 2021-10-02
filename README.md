@@ -1,3 +1,5 @@
+[![Manually build and deploy](https://github.com/qgriffith/about_me/actions/workflows/build-deploy-manual.yml/badge.svg)](https://github.com/qgriffith/about_me/actions/workflows/build-deploy-manual.yml)
+
 # About_Me
 
 ### Description 
