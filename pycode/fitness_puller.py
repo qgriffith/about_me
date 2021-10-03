@@ -5,6 +5,7 @@ import urllib.request
 from dotenv import load_dotenv
 import os
 import datetime
+import sys
 
 # take environment variables from .env.
 load_dotenv()  
@@ -16,21 +17,35 @@ def pelly():
     """
     PellyUser = os.environ.get("PELLY_USER")
     PellyPass = os.environ.get("PELLY_PASS")
-    conn = pylotoncycle.PylotonCycle(PellyUser, PellyPass)
+    
+    try:
+     conn = pylotoncycle.PylotonCycle(PellyUser, PellyPass)
+    except Exception as err:
+        print("Connection error raised", err)
+        sys.exit(1)
 
     #get only the last workout TODO:Update to all work outs for the day
-    last_workout = conn.GetRecentWorkouts(1)
+    try:
+        last_workout = conn.GetRecentWorkouts(1)
+    except Exception as err:
+        print("This is weird, unable to find a workout", err)
 
     #returns all your profile data
-    me = conn.GetMe() 
+    try:
+        me = conn.GetMe() 
+    except Exception as err:
+        print("User may not exist", err)
 
     profile_url = "https://members.onepeloton.com/members/{0}/overview".format(me['username'])
     total_workouts = me['total_workouts']
     hugo_file = "../hugo/main/content/hobbies/fitness/index.md"
     static_files = "../hugo/main/static/images/"
+    
+    try:
+        mdFile = MdUtils(file_name=hugo_file)
+    except Exception as err:
+        print("Path to file does not exist", err)
 
-   
-    mdFile = MdUtils(file_name=hugo_file)
     # create the hugo header which elimantes needing to have hugo stub the page out
     mdFile.new_paragraph('---')
     mdFile.new_paragraph('title: "Fitness"')
@@ -59,7 +74,11 @@ def pelly():
             class_url = "https://members.onepeloton.com/classes/{0}?classId={1}&modal=classDetailsModal".format(discipline, classId)
 
             # we only get the ID of the instructor and have to look up their name in a dict pulled from the api
-            instructor = conn.instructor_id_dict[resp['ride']['instructor_id']]
+            try:
+                instructor = conn.instructor_id_dict[resp['ride']['instructor_id']]
+            except Exception as err:
+                print("Coach was not found", err)
+            
             coach=instructor['name']
             
             classimage__save_path = "{0}{1}".format(static_files, "class.jpg")
