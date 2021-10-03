@@ -1,18 +1,17 @@
-name: Manually build and deploy
+name: CI
+
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - master
 
 jobs:
-  build_deploy_manual:
-  steps:
-  - uses: actions/checkout@v2
-    name: Checkout
-  - uses: qgriffith/about_me/.github/workflows/build-deploy-callable-wf.yml@master
-    name: Build and Deploy
-    with:
-      HUGO_VERSION: '0.88.1'
-    secrets:
-      PELLY_USER: ${{ secrets.PELLY_USER }}
-      PELLY_PASS: ${{ secrets.PELLY_PASS }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@master
+      name: Checkout
+    - uses: ./.github/workflows/build-deploy-callable-wf
+      name: Test
