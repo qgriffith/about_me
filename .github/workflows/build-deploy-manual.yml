@@ -5,14 +5,14 @@ on:
 jobs:
   build_deploy_manual:
   steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Build and deploy
-      uses: qgriffith/about_me/.github/workflows/build-deploy-callable-wf.yml@master
-      with:
-        HUGO_VERSION: '0.88.1'
-      secrets:
-        PELLY_USER: ${{ secrets.PELLY_USER }}
-        PELLY_PASS: ${{ secrets.PELLY_PASS }}
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  - name: Checkout
+    uses: actions/checkout@v2
+  - name: Build and deploy
+    uses: qgriffith/about_me/.github/workflows/build-deploy-callable-wf.yml@master
+    with:
+      HUGO_VERSION: '0.88.1'
+    secrets:
+      PELLY_USER: ${{ secrets.PELLY_USER }}
+      PELLY_PASS: ${{ secrets.PELLY_PASS }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
