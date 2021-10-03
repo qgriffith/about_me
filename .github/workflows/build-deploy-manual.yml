@@ -4,6 +4,7 @@ on:
 
 jobs:
   build_deploy_manual:
+  steps:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build and deploy
