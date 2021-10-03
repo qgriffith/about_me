@@ -5,10 +5,10 @@ on:
 jobs:
   build_deploy_manual:
   steps:
-  - name: Checkout
-    uses: actions/checkout@v2
-  - name: Build and deploy
-    uses: qgriffith/about_me/.github/workflows/build-deploy-callable-wf.yml@master
+  - uses: actions/checkout@v2
+    name: Checkout
+  - uses: qgriffith/about_me/.github/workflows/build-deploy-callable-wf.yml@master
+    name: Build and Deploy
     with:
       HUGO_VERSION: '0.88.1'
     secrets:
