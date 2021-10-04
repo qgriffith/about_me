@@ -127,7 +127,7 @@ googleAnalytics = "G-XH7WGNT0S6"
         [[params.experience.list.items]]
         details = "Managing the Jenkins and deployment frameworks for all of IT"
         [[params.experience.list.items]]
-        details = "Managing the 125+ AWS accounts with in IT"
+        details = "Managing the 25+ AWS accounts with in IT"
         [[params.experience.list.items]]
         details = "Partnering with other teams outside of IT in architecting and deploying their solutions to AWS"
 

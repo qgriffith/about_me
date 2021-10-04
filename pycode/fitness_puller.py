@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import pylotoncycle
 from mdutils.mdutils import MdUtils
 from mdutils import Html
