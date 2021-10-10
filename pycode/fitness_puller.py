@@ -43,7 +43,7 @@ def pelly():
 
     profile_url = "https://members.onepeloton.com/members/{0}/overview".format(me['username'])
     total_workouts = me['total_workouts']
-    hugo_file = "../hugo/main/content/hobbies/fitness/index.md"
+    hugo_file = "../hugo/main/content/hobbies/fitness/peloton.md"
     static_files = "../hugo/main/static/images/"
     
     # use count to validate if any workouts happened today and if not print no workouts
@@ -56,19 +56,18 @@ def pelly():
 
     # create the hugo header which elimantes needing to have hugo stub the page out
     mdFile.new_paragraph('---')
-    mdFile.new_paragraph('title: "Fitness"')
+    mdFile.new_paragraph('title: "Peloton"')
     mdFile.new_paragraph("date: {0}".format(datetime.date.today()))
     mdFile.new_paragraph("draft: false")
     mdFile.new_paragraph('tags:  ["peloton", "fitness"]')
     mdFile.new_paragraph('categories:  ["fitness"]')
     mdFile.new_paragraph('---')
 
-    mdFile.new_header(level=1, title='Peloton')
-    mdFile.new_header(level=2, title='Profile')
+    mdFile.new_header(level=1, title='Profile')
     mdFile.new_paragraph("**Profile**: " +  mdFile.new_inline_link(link=profile_url, text=me['username'], bold_italics_code='b'))
     mdFile.new_paragraph("**Total Workouts:** {0}".format(total_workouts))
     
-    mdFile.new_header(level=3, title="Today's workouts")    
+    mdFile.new_header(level=2, title="Today's workouts")    
 
     with open(hugo_file, "w+") as f:
         for w in today_workouts:            
@@ -80,7 +79,7 @@ def pelly():
                 count += 1
                 workout_id = w['id']
                 resp = conn.GetWorkoutById(workout_id)
-                mdFile.new_header(level=4, title=resp['name'])
+                mdFile.new_header(level=3, title=resp['name'])
                 class_image = resp['ride']['image_url']
                 name = resp['name']
                 title = resp['ride']['title']
