@@ -5,7 +5,7 @@ on:
 
 jobs:
   build_deploy_schedule:
-    uses: qgriffith/about_me/.github/workflows/build-deploy-callable-wf.yml@features/strava
+    uses: qgriffith/about_me/.github/workflows/build-deploy-callable-wf.yml@master
     with:
       HUGO_VERSION: '0.88.1'
     secrets:
