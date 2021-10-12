@@ -7,7 +7,7 @@ on:
      - '!terraform/**'
 jobs:
   build_deploy:
-    uses: qgriffith/about_me/.github/workflows/build-deploy-callable-wf.yml@master
+    uses: qgriffith/about_me/.github/workflows/build-deploy-callable-wf.yml@features/strava
     with:
       HUGO_VERSION: '0.88.1'
     secrets:
@@ -18,5 +18,3 @@ jobs:
       STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
-     
