@@ -11,7 +11,7 @@ Deplyment is managed via Github Actions and is automatically deploy the website 
 #### TODO
 * Add Unit test to the python script
 * Turn the python script into modules
-* Enhance the look of the peloton/strava pages
+* ~~Enhance the look of the peloton/strava pages~~
 * ~~Add a step in the pipeline to invalidate CF cache on deploy~~
 * ~~Add logging output to the python script~~
 * ~~Look at switching to GitHub Actions~~

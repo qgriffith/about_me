@@ -68,10 +68,14 @@ def pelly():
     mdFile.new_paragraph('categories:  ["fitness"]')
     mdFile.new_paragraph('---')
 
+    mdFile.new_paragraph(Html.image(path='/images/peloton.png', size='300x200', align='center') + '\n')
+
     mdFile.new_header(level=1, title='Profile')
-    mdFile.new_paragraph("**Profile**: " +  mdFile.new_inline_link(link=profile_url, text=me['username'], bold_italics_code='b'))
+    mdFile.new_paragraph("**Profile**: " +  mdFile.new_inline_link(link=profile_url, text=me['username'], bold_italics_code='b') + " <i class='fas fa-user-circle'></i>")
     mdFile.new_paragraph("**Total Workouts:** {0}".format(total_workouts))
     
+    mdFile.new_paragraph("<hr style='border:1px solid gray'> </hr>" + '\n')
+
     mdFile.new_header(level=2, title="Today's workouts")    
 
     with open(hugo_file, "w+") as f:
@@ -170,7 +174,7 @@ def strava():
         sys.exit(1)
 
     run_ytd_totals = client.get_athlete_stats().ytd_run_totals
-    run_monthly_totals = client.get_athlete_stats().recent_run_totals
+    run_monthly_totals = client.get_athlete_stats().recent_run_totals    
     
     # create the hugo header which elimantes needing to have hugo stub the page out
     mdFile.new_paragraph('---')
@@ -181,28 +185,33 @@ def strava():
     mdFile.new_paragraph('categories:  ["fitness"]')
     mdFile.new_paragraph('---')
 
-    mdFile.new_header(level=1, title='Profile Stats')
-    mdFile.new_paragraph("**Profile**: " +  mdFile.new_inline_link(link=profile_url, text="qgriffith", bold_italics_code='b'))
-    mdFile.new_paragraph("**YTD Total Runs:** {0}".format(run_ytd_totals.count))
+    mdFile.new_paragraph(Html.image(path='/images/strava.png', size='300x200', align='center') + '\n')
+
+    mdFile.new_header(level=1, title='Stats')
+    mdFile.new_paragraph("**Profile**: " +  mdFile.new_inline_link(link=profile_url, text="qgriffith", bold_italics_code='b') + " <i class='fas fa-user-circle'></i>")
+    mdFile.new_paragraph( "**YTD Total Runs:** {0} ".format(run_ytd_totals.count) + " <i class='fas fa-running'></i>")
     mdFile.new_paragraph("**YTD Total Miles Ran:** {0}".format(unithelper.miles(run_ytd_totals.distance)))
     mdFile.new_paragraph("**Last 30 days Total Runs:** {0}".format(run_monthly_totals.count))
-    mdFile.new_paragraph("**30 Day Total Miles Ran:** {0}".format(unithelper.miles(run_monthly_totals.distance)))
+    mdFile.new_paragraph("**30 Day Total Miles Ran:** {0} ".format(unithelper.miles(run_monthly_totals.distance)) + " <i class='fas fa-running'></i>")
     
+    mdFile.new_paragraph("<hr style='border:1px solid gray'> </hr>" + '\n')
+
     mdFile.new_header(level=2, title="Today's Runs")
     
     with open(hugo_file, "w+") as f:
         for a in today_activites:            
             if "Run" in a.type:
                 pace_seconds = a.moving_time.seconds/unithelper.miles(a.distance).num
+                run_url = "https://www.strava.com/activities/{}".format(a.id)
                 count += 1
                 mdFile.new_paragraph("**Workout Type:** {0}".format(a.type))
-                mdFile.new_paragraph("**Title:** {}".format(a.name))
+                mdFile.new_paragraph("**Title:** " + mdFile.new_inline_link(link=run_url, text=a.name, bold_italics_code='b'))
                 mdFile.new_paragraph("**Date:** {}".format(a.start_date_local.strftime("%y-%m-%d %H:%M")))
-                mdFile.new_paragraph("**Time:** {0}".format(a.elapsed_time))
-                mdFile.new_paragraph("**Distance:** {0}".format(unithelper.miles(a.distance)))
-                mdFile.new_paragraph("**Pace:** {0}/mi".format(round(pace_seconds/60, 2)))
-                mdFile.new_paragraph("**Average Speed:** {0}".format(unithelper.miles_per_hour(a.average_speed)))
-                mdFile.new_paragraph("**Max Speed:** {0}".format(unithelper.miles_per_hour(a.max_speed)))
+                mdFile.new_paragraph("**Time:** {0} ".format(a.elapsed_time) + " <i class='far fa-clock'></i>")
+                mdFile.new_paragraph("**Distance:** {0} ".format(unithelper.miles(a.distance)) + " <i class='fas fa-running'></i>")
+                mdFile.new_paragraph("**Pace:** {0}/mi ".format(round(pace_seconds/60, 2)) + " <i class='fas fa-road'></i>")
+                mdFile.new_paragraph("**Average Speed:** {0} ".format(unithelper.miles_per_hour(a.average_speed)) + " <i class='fas fa-tachometer-alt'></i>")
+                mdFile.new_paragraph("**Max Speed:** {0} ".format(unithelper.miles_per_hour(a.max_speed)) + " <i class='fas fa-tachometer-alt'></i>")
                 
         if count == 0:
             print("No runs found today, slacker!!")
