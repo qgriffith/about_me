@@ -54,7 +54,7 @@ tf.plan
 
 #hugo
 **/public
-**/fitness/index.md
+**/fitness/*.md
 class.jpg
 #python_scripts
 .env
