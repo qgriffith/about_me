@@ -43,6 +43,7 @@ def pelly():
         me = conn.GetMe() 
     except Exception as err:
         print("User may not exist", err)
+        sys.exit(1)
 
     profile_url = "https://members.onepeloton.com/members/{0}/overview".format(me['username'])
     total_workouts = me['total_workouts']
@@ -56,6 +57,7 @@ def pelly():
         mdFile = MdUtils(file_name=hugo_file)
     except Exception as err:
         print("Path to file does not exist", err)
+        sys.exit(1)
 
     # create the hugo header which elimantes needing to have hugo stub the page out
     mdFile.new_paragraph('---')
@@ -116,9 +118,12 @@ def pelly():
                     mdFile.new_paragraph(Html.image(path=badge_url, size='x50'))   
                 mdFile.write('\n')        
         if count == 0:
+            print("No workouts found today, slacker!!")
             mdFile.new_paragraph("**No workouts today**")
         
         mdFile.new_paragraph("**Total today:** {0}".format(count))
+
+        print("Writting Peloton Hugo Page")
         f.write(mdFile.file_data_text)        
 
 def strava():
@@ -140,10 +145,14 @@ def strava():
     client = Client()
 
     # refresh the API token, it expires every 6h and this will only run once a day
-    refresh_response = client.refresh_access_token(client_id=MY_STRAVA_CLIENT_ID, client_secret=MY_STRAVA_CLIENT_SECRET, refresh_token=MY_STRAVA_REFRESH_TOKEN)
-    client.access_token = refresh_response['access_token']
-    client.refresh_token = MY_STRAVA_REFRESH_TOKEN
-    
+    try:
+        refresh_response = client.refresh_access_token(client_id=MY_STRAVA_CLIENT_ID, client_secret=MY_STRAVA_CLIENT_SECRET, refresh_token=MY_STRAVA_REFRESH_TOKEN)
+        client.access_token = refresh_response['access_token']
+        client.refresh_token = MY_STRAVA_REFRESH_TOKEN
+    except Exception as err:
+        print("Something has gone wrong with the API token refresh....", err)
+        sys.exit(1)
+
     athlete = client.get_athlete()
     
     # get the last 5 workouts during the last 24 hours
@@ -158,6 +167,7 @@ def strava():
         mdFile = MdUtils(file_name=hugo_file)
     except Exception as err:
         print("Path to file does not exist", err)
+        sys.exit(1)
 
     run_ytd_totals = client.get_athlete_stats().ytd_run_totals
     run_monthly_totals = client.get_athlete_stats().recent_run_totals
@@ -195,9 +205,15 @@ def strava():
                 mdFile.new_paragraph("**Max Speed:** {0}".format(unithelper.miles_per_hour(a.max_speed)))
                 
         if count == 0:
+            print("No runs found today, slacker!!")
             mdFile.new_paragraph("**No runs today**")
+        
+        print("Writting Strava Hugo Page")    
         f.write(mdFile.file_data_text)
 
 if __name__ == "__main__":
-    pelly()
-    strava()
+   print("Gathering Peloton Data........")
+   pelly()
+
+   print("Gathering Stava Data........")
+   strava()
