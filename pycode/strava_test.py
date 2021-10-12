@@ -70,12 +70,15 @@ def strava():
     
     with open(hugo_file, "w+") as f:
         for a in today_activites:            
-            if "Run" in a.type: 
+            if "Run" in a.type:
+                pace_seconds = a.moving_time.seconds/unithelper.miles(a.distance).num
                 count += 1
                 mdFile.new_paragraph("**Workout Type:** {0}".format(a.type))
                 mdFile.new_paragraph("**Title:** {}".format(a.name))
+                mdFile.new_paragraph("**Date:** {}".format(a.start_date_local.strftime("%y-%m-%d %H:%M")))
                 mdFile.new_paragraph("**Time:** {0}".format(a.elapsed_time))
                 mdFile.new_paragraph("**Distance:** {0}".format(unithelper.miles(a.distance)))
+                mdFile.new_paragraph("**Pace:** {0}/mi".format(round(pace_seconds/60, 2)))
                 mdFile.new_paragraph("**Average Speed:** {0}".format(unithelper.miles_per_hour(a.average_speed)))
                 mdFile.new_paragraph("**Max Speed:** {0}".format(unithelper.miles_per_hour(a.max_speed)))
                 
