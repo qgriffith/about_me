@@ -43,6 +43,7 @@ def pelly():
         me = conn.GetMe() 
     except Exception as err:
         print("User may not exist", err)
+        sys.exit(1)
 
     profile_url = "https://members.onepeloton.com/members/{0}/overview".format(me['username'])
     total_workouts = me['total_workouts']
@@ -56,6 +57,7 @@ def pelly():
         mdFile = MdUtils(file_name=hugo_file)
     except Exception as err:
         print("Path to file does not exist", err)
+        sys.exit(1)
 
     # create the hugo header which elimantes needing to have hugo stub the page out
     mdFile.new_paragraph('---')
@@ -66,10 +68,14 @@ def pelly():
     mdFile.new_paragraph('categories:  ["fitness"]')
     mdFile.new_paragraph('---')
 
+    mdFile.new_paragraph(Html.image(path='/images/peloton.png', size='300x200', align='center') + '\n')
+
     mdFile.new_header(level=1, title='Profile')
-    mdFile.new_paragraph("**Profile**: " +  mdFile.new_inline_link(link=profile_url, text=me['username'], bold_italics_code='b'))
+    mdFile.new_paragraph("**Profile**: " +  mdFile.new_inline_link(link=profile_url, text=me['username'], bold_italics_code='b') + " <i class='fas fa-user-circle'></i>")
     mdFile.new_paragraph("**Total Workouts:** {0}".format(total_workouts))
     
+    mdFile.new_paragraph("<hr style='border:1px solid gray'> </hr>" + '\n')
+
     mdFile.new_header(level=2, title="Today's workouts")    
 
     with open(hugo_file, "w+") as f:
@@ -116,9 +122,12 @@ def pelly():
                     mdFile.new_paragraph(Html.image(path=badge_url, size='x50'))   
                 mdFile.write('\n')        
         if count == 0:
+            print("No workouts found today, slacker!!")
             mdFile.new_paragraph("**No workouts today**")
         
         mdFile.new_paragraph("**Total today:** {0}".format(count))
+
+        print("Writting Peloton Hugo Page")
         f.write(mdFile.file_data_text)        
 
 def strava():
@@ -140,10 +149,14 @@ def strava():
     client = Client()
 
     # refresh the API token, it expires every 6h and this will only run once a day
-    refresh_response = client.refresh_access_token(client_id=MY_STRAVA_CLIENT_ID, client_secret=MY_STRAVA_CLIENT_SECRET, refresh_token=MY_STRAVA_REFRESH_TOKEN)
-    client.access_token = refresh_response['access_token']
-    client.refresh_token = MY_STRAVA_REFRESH_TOKEN
-    
+    try:
+        refresh_response = client.refresh_access_token(client_id=MY_STRAVA_CLIENT_ID, client_secret=MY_STRAVA_CLIENT_SECRET, refresh_token=MY_STRAVA_REFRESH_TOKEN)
+        client.access_token = refresh_response['access_token']
+        client.refresh_token = MY_STRAVA_REFRESH_TOKEN
+    except Exception as err:
+        print("Something has gone wrong with the API token refresh....", err)
+        sys.exit(1)
+
     athlete = client.get_athlete()
     
     # get the last 5 workouts during the last 24 hours
@@ -158,9 +171,10 @@ def strava():
         mdFile = MdUtils(file_name=hugo_file)
     except Exception as err:
         print("Path to file does not exist", err)
+        sys.exit(1)
 
     run_ytd_totals = client.get_athlete_stats().ytd_run_totals
-    run_monthly_totals = client.get_athlete_stats().recent_run_totals
+    run_monthly_totals = client.get_athlete_stats().recent_run_totals    
     
     # create the hugo header which elimantes needing to have hugo stub the page out
     mdFile.new_paragraph('---')
@@ -171,33 +185,44 @@ def strava():
     mdFile.new_paragraph('categories:  ["fitness"]')
     mdFile.new_paragraph('---')
 
-    mdFile.new_header(level=1, title='Profile Stats')
-    mdFile.new_paragraph("**Profile**: " +  mdFile.new_inline_link(link=profile_url, text="qgriffith", bold_italics_code='b'))
-    mdFile.new_paragraph("**YTD Total Runs:** {0}".format(run_ytd_totals.count))
+    mdFile.new_paragraph(Html.image(path='/images/strava.png', size='300x200', align='center') + '\n')
+
+    mdFile.new_header(level=1, title='Stats')
+    mdFile.new_paragraph("**Profile**: " +  mdFile.new_inline_link(link=profile_url, text="qgriffith", bold_italics_code='b') + " <i class='fas fa-user-circle'></i>")
+    mdFile.new_paragraph( "**YTD Total Runs:** {0} ".format(run_ytd_totals.count) + " <i class='fas fa-running'></i>")
     mdFile.new_paragraph("**YTD Total Miles Ran:** {0}".format(unithelper.miles(run_ytd_totals.distance)))
     mdFile.new_paragraph("**Last 30 days Total Runs:** {0}".format(run_monthly_totals.count))
-    mdFile.new_paragraph("**30 Day Total Miles Ran:** {0}".format(unithelper.miles(run_monthly_totals.distance)))
+    mdFile.new_paragraph("**30 Day Total Miles Ran:** {0} ".format(unithelper.miles(run_monthly_totals.distance)) + " <i class='fas fa-running'></i>")
     
+    mdFile.new_paragraph("<hr style='border:1px solid gray'> </hr>" + '\n')
+
     mdFile.new_header(level=2, title="Today's Runs")
     
     with open(hugo_file, "w+") as f:
         for a in today_activites:            
             if "Run" in a.type:
                 pace_seconds = a.moving_time.seconds/unithelper.miles(a.distance).num
+                run_url = "https://www.strava.com/activities/{}".format(a.id)
                 count += 1
                 mdFile.new_paragraph("**Workout Type:** {0}".format(a.type))
-                mdFile.new_paragraph("**Title:** {}".format(a.name))
+                mdFile.new_paragraph("**Title:** " + mdFile.new_inline_link(link=run_url, text=a.name, bold_italics_code='b'))
                 mdFile.new_paragraph("**Date:** {}".format(a.start_date_local.strftime("%y-%m-%d %H:%M")))
-                mdFile.new_paragraph("**Time:** {0}".format(a.elapsed_time))
-                mdFile.new_paragraph("**Distance:** {0}".format(unithelper.miles(a.distance)))
-                mdFile.new_paragraph("**Pace:** {0}/mi".format(round(pace_seconds/60, 2)))
-                mdFile.new_paragraph("**Average Speed:** {0}".format(unithelper.miles_per_hour(a.average_speed)))
-                mdFile.new_paragraph("**Max Speed:** {0}".format(unithelper.miles_per_hour(a.max_speed)))
+                mdFile.new_paragraph("**Time:** {0} ".format(a.elapsed_time) + " <i class='far fa-clock'></i>")
+                mdFile.new_paragraph("**Distance:** {0} ".format(unithelper.miles(a.distance)) + " <i class='fas fa-running'></i>")
+                mdFile.new_paragraph("**Pace:** {0}/mi ".format(round(pace_seconds/60, 2)) + " <i class='fas fa-road'></i>")
+                mdFile.new_paragraph("**Average Speed:** {0} ".format(unithelper.miles_per_hour(a.average_speed)) + " <i class='fas fa-tachometer-alt'></i>")
+                mdFile.new_paragraph("**Max Speed:** {0} ".format(unithelper.miles_per_hour(a.max_speed)) + " <i class='fas fa-tachometer-alt'></i>")
                 
         if count == 0:
+            print("No runs found today, slacker!!")
             mdFile.new_paragraph("**No runs today**")
+        
+        print("Writting Strava Hugo Page")    
         f.write(mdFile.file_data_text)
 
 if __name__ == "__main__":
-    pelly()
-    strava()
+   print("Gathering Peloton Data........")
+   pelly()
+
+   print("Gathering Stava Data........")
+   strava()
