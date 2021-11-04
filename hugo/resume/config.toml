@@ -112,8 +112,14 @@ googleAnalytics = "G-XH7WGNT0S6"
         enable = true
 
         [[params.experience.list]]
+        title = "Lead DevOps Engineer"
+        dates = "October 2020 - Present"
+        company = "Slingshot Aerospace"
+        details = "Lead DevOps Engineer"
+    
+        [[params.experience.list]]
         title = "Lead of DevOps"
-        dates = "June 2020 - Present"
+        dates = "June 2020 - October 2020"
         company = "Epic Games"
         details = "Manager of the IT DevOps and Hosted Service team. Leading and providing guidance in cloud and DevOps practices as well as owning the Atlasian suite of products used by all of Epic."
         [[params.experience.list.items]]
