@@ -5,7 +5,7 @@ on:
     inputs:
       HUGO_VERSION:
         description: 'Version of hugo to install'
-        default: '0.88.1'
+        default: '0.92.0'
         type: string
     secrets:
       PELLY_USER:
