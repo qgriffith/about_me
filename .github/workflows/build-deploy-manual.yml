@@ -6,7 +6,7 @@ jobs:
   build_deploy_manual:
     uses: qgriffith/about_me/.github/workflows/build-deploy-callable-wf.yml@master
     with:
-      HUGO_VERSION: '0.88.1'
+      HUGO_VERSION: '0.92.0'
     secrets:
       PELLY_USER: ${{ secrets.PELLY_USER }}
       PELLY_PASS: ${{ secrets.PELLY_PASS }}
