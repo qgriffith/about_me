@@ -1,6 +1,6 @@
 # Page settings
 
-baseURL = "https://qgriffith.me/resume"
+baseURL = "http://qgriffith.com/resume"
 languageCode = "en"
 title = "Quenten Griffith Resume"
 theme = "hugo-devresume-theme"
@@ -273,10 +273,13 @@ order = [".jpg$", ".gif$"]
 name = "resume"
 
 # If you are using a CloudFront CDN, deploy will invalidate the cache as needed.
-cloudFrontDistributionID = "E125NIHTJQ9BXH"
+#cloudFrontDistributionID = "E125NIHTJQ9BXH"
 
 #S3
-URL = "s3://qgriffith-about-me-site?region=us-east-2&prefix=resume/"
+#URL = "s3://qgriffith-about-me-site?region=us-east-2&prefix=resume/"
+
+#GCP
+URL = "gs://hugo-about-me-static/resume/"
 
 
 [[deployment.matchers]]

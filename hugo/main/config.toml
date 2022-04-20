@@ -723,7 +723,10 @@ name = "main"
 #cloudFrontDistributionID = "EKKIJCBCAINNI"
 
 #S3
-URL = "s3://qgriffith-about-me-site?region=us-east-2"
+#URL = "s3://qgriffith-about-me-site?region=us-east-2"
+
+#GCP
+URL = "gs://hugo-about-me-static"
 
 
 [[deployment.matchers]]
