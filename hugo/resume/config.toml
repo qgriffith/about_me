@@ -1,6 +1,6 @@
 # Page settings
 
-baseURL = "http://qgriffith.com/resume"
+baseURL = "https://qgriffith.com/resume"
 languageCode = "en"
 title = "Quenten Griffith Resume"
 theme = "hugo-devresume-theme"
@@ -113,13 +113,13 @@ googleAnalytics = "G-XH7WGNT0S6"
 
         [[params.experience.list]]
         title = "Lead DevOps Engineer"
-        dates = "October 2020 - Present"
+        dates = "October 2021 - Present"
         company = "Slingshot Aerospace"
         details = "Lead DevOps Engineer"
     
         [[params.experience.list]]
         title = "Lead of DevOps"
-        dates = "June 2020 - October 2020"
+        dates = "June 2020 - October 2021"
         company = "Epic Games"
         details = "Manager of the IT DevOps and Hosted Service team. Leading and providing guidance in cloud and DevOps practices as well as owning the Atlasian suite of products used by all of Epic."
         [[params.experience.list.items]]
